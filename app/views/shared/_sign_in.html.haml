@@ -1,0 +1,22 @@
+%a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+	Sign in
+	%b.caret
+%ul.dropdown-menu{style: "padding: 15px;min-width: 250px;top: 52px;border-top: none;"}
+	%li
+		.row
+			.col-md-12
+				= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form', id: 'login-nav', role: 'form'}) do |f|
+					.form-group
+						%label.sr-only{for: "inputEmail3"} Email address
+						%input#inputEmail3.form-control{name: "user[email]", placeholder: "Email", required: "", type: "email"}/
+					.form-group
+						%label.sr-only{for: "inputPassword3"} Password
+						%input#inputPassword3.form-control{name: "user[password]", placeholder: "Password", required: "", type: "password"}/
+					.checkbox
+						- if devise_mapping.rememberable?
+							%label
+								%input#user_remember_me{name: "user[remember_me]", type: "checkbox", value: "1"}/
+								Remember me
+					.form-group
+						%button.btn.btn-success.btn-sm{type: "submit"} Sign in
+						%button.btn.btn-default.btn-sm{type: "reset"} Reset

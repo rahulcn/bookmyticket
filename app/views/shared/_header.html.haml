@@ -1,0 +1,30 @@
+%nav.navbar.navbar-default{role: "navigation", style: "border-radius: 0;box-shadow: 0px 0px 5px #555;"}
+	.navbar-header
+		%button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+			%span.sr-only Toggle navigation
+			%span.icon-bar
+			%span.icon-bar
+			%span.icon-bar
+		%a.navbar-brand{href: "#"} BookMyTicket
+	#bs-example-navbar-collapse-1.collapse.navbar-collapse
+		%ul.nav.navbar-nav
+			%li.active
+				%a{href: "#"} Home
+			%li
+				%a{href: "#"} About Us
+
+		%form.navbar-form.navbar-left{role: "search"}
+			.form-group
+				%input.form-control{placeholder: "Search", type: "text"}/
+			%button.btn.btn-default{type: "submit"} Submit
+
+		- if signed_in?
+			%ul.nav.navbar-nav.navbar-right
+				%li.active
+					= link_to 'Sign out', destroy_user_session_path, method: :delete
+		- else
+			%ul.nav.navbar-nav.navbar-right
+				%li.dropdown
+					= render partial: 'shared/sign_up'
+				%li.dropdown
+					= render partial: 'shared/sign_in'

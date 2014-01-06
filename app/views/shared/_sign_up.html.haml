@@ -1,0 +1,31 @@
+%a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+	Sign Up
+	%b.caret
+%ul.dropdown-menu{style: "padding: 15px;min-width: 250px;top: 52px;border-top: none;"}
+	%li
+		.row
+			.col-md-12
+				= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form', id: 'login-nav', role: 'form'}) do |f|
+					.form-group
+						%label.sr-only{for: "inputName"} Name
+						%input#inputName.form-control{name: "user[name]", placeholder: "Name", required: "", type: "text"}/
+					.form-group
+						%label.sr-only{for: "inputEmail3"} Email address
+						%input#inputEmail3.form-control{name: "user[email]", placeholder: "Email", required: "", type: "email"}/
+					.form-group
+						%label.sr-only{for: "inputPassword3"} Password
+						%input#inputPassword3.form-control{name: "user[password]", placeholder: "Password", required: "", type: "password"}/
+					.form-group
+						%label.sr-only{for: "inputPassword32"} Password Confirmation
+						%input#inputPassword32.form-control{name: "user[password_confirmation]", placeholder: "Password Confirmation", required: "", type: "password"}/
+					.radio-inline
+						%label
+							%input#optionsRadios1{checked: "checked", name: "user[gender]", type: "radio", value: "Male"}/
+							Male
+					.radio-inline
+						%label
+							%input#optionsRadios2{name: "user[gender]", type: "radio", value: "Female"}/
+							Female
+					.form-group
+						%button.btn.btn-success.btn-sm{type: "submit"} Sign Up
+						%button.btn.btn-default.btn-sm{type: "reset"} Reset
