@@ -1,0 +1,43 @@
+.form-horizontal.well
+	= form_for(@event, validate: true) do |f|
+
+		.form-group
+			%label.col-sm-3.control-label
+				Title
+			.col-sm-6
+				= f.text_field :title, placeholder: 'Title', class: "form-control", required: 'required'
+
+		.form-group
+			%label.col-sm-3.control-label
+				Description
+			.col-sm-6
+				= f.text_area :desc, placeholder: 'Description', class: "form-control", required: 'required'
+
+		.form-group
+			%label.col-sm-3.control-label
+				Place
+			.col-sm-6
+				= f.text_field :place, placeholder: 'Place', class: "form-control", required: 'required'
+
+		.form-group
+			%label.col-sm-3.control-label
+				Price
+			.col-sm-6
+				= f.number_field :price, placeholder: 'Price', class: "form-control", required: 'required'
+
+		.form-group
+			%label.col-sm-3.control-label
+				Starts at
+			.col-md-6
+				= f.date_field :starts_at, value: f.object.starts_at, required: 'required'
+
+		.form-group
+			%label.col-sm-3.control-label
+				Ends at
+			.col-md-6
+				= f.date_field :ends_at, value: f.object.ends_at, required: 'required'
+
+		.form-group
+			.col-sm-offset-3.col-sm-6
+				= f.submit value: action, class: "btn btn-success"
+

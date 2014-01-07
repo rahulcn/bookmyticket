@@ -1,0 +1,45 @@
+%ol.breadcrumb
+	%li
+		%a{href: "#"} Admin
+	%li Offer
+	%li.active Coupons
+.control-actions
+	%nav.search-user.navbar.navbar-default
+		= form_tag("#", method:"get", class: "navbar-form navbar-left") do
+			.form-group
+				= text_field_tag :q, nil, placeholder: 'not working...', class: "form-control"
+			= submit_tag("Search", class: "btn btn-default")
+		.btn.btn-success{style: "margin-top: 8px;float: right;margin-right: 15px"}
+			= link_to "Display Coupons", "/display_coupons/#{@coupons.first.offer_id}", style: "color: white;"
+		.btn.btn-info{style: "margin-top: 8px;float: right;margin-right: 15px"}
+			= link_to "Back To Offer", offers_path, style: "color: white;"
+
+
+
+
+%table.table.table-bordered{style: "font-size:15px;"}
+	%tr
+		%th{:align => "left"} Coupon Id
+		%th{:align => "left"} Coupon Code
+		%th{:align => "left"} Status
+		%th{:align => "left"} Redeem Date
+		%th{:align => "left"} Offer Id
+		%th{:align => "left"} Order Id
+
+
+	- @coupons.each do |coupon|
+		%tr
+			%td= coupon.id
+			%td= coupon.coupon_code
+			%td= coupon.status
+			%td= coupon.redeem_date
+			%td= coupon.offer_id
+			%td= coupon.order_id
+
+/ = paginate @coupons
+
+:css
+	.btn-info:hover {
+		background-image: none;
+	}
+

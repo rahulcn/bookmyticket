@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration
 			t.string :title
 			t.string :desc
 			t.string :place
+			t.float :price, :default => 0.0
 			t.datetime :starts_at
 			t.datetime :ends_at
 

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!, except: [:home]
-	before_action :set_event, except: [:index, :home]
+	before_action :set_event, only: [:destroy, :edit, :update]
 
 
 	def home
@@ -26,12 +26,10 @@ class EventsController < ApplicationController
 	# GET /events/new
 	def new
 		@event = Event.new
-		render 'admin/events/new', layout: 'admin'
 	end
 
 	# GET /events/1/edit
 	def edit
-		render 'admin/events/edit', layout: 'admin'
 	end
 
 	# POST /events
@@ -53,15 +51,12 @@ class EventsController < ApplicationController
 	# PATCH/PUT /events/1
 	# PATCH/PUT /events/1.json
 	def update
-		respond_to do |format|
-			if @event.update(event_params)
-				format.html { redirect_to "/#{Event.to_s.underscore.pluralize}", notice: "Your changes are successfully updated" }
-				format.json { head :no_content }
-			else
-				flash[:alert] = @event.errors.full_messages
-				format.html { render 'admin/events/edit', layout: 'admin'  }
-				format.json { render json: @event.errors, status: :unprocessable_entity }
-			end
+		if @event.update_attributes(event_params)
+			flash[:notice] = 'Event has been successfully updated'
+			redirect_to action: :index
+		else
+			flash[:alert] = @event.errors.full_messages
+			render action: :edit
 		end
 	end
 
@@ -69,21 +64,18 @@ class EventsController < ApplicationController
 	# DELETE /events/1.json
 	def destroy
 		@event.destroy
-		respond_to do |format|
-			format.html { redirect_to "/#{Event.to_s.underscore.pluralize}" }
-			format.json { head :no_content }
-		end
+		redirect_to action: :index
 	end
 
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_event
-		@event ||= Event.find(params[:event_id])
+		@event ||= Event.find(params[:id])
 	end
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def event_params
-		params.require(:event).permit(:title, :desc, :starts_at, :ends_at)
+		params.require(:event).permit(:title, :desc, :place, :price, :starts_at, :ends_at)
 	end
 
 end

@@ -1,2 +1,31 @@
-%h1
-	Listing Events
+.row{style: 'margin-bottom: 20px;'}
+	.col-md-5
+		.media
+			%a.pull-left{href: "#"}
+				%img.media-object.dp.img-circle{src: avatar_url(current_user), style: "width: 100px;height:100px;border: 2px solid #CACACA;border-radius: 10%;"}/
+			.media-body
+				%h4.media-heading
+					Rahul Chandra
+					%small India
+				%h5
+					Software Developer at
+					%a{href: "http://keepworks.in"} Keepworks
+				%hr{style: "margin:8px auto"}/
+				%span.label.label-default HTML5/CSS3
+				%span.label.label-default jQuery
+				%span.label.label-info ROR
+				%span.label.label-default Ruby
+				%span.label.label-default Bootstrap
+	.col-md-7
+		%span.pull-right
+			%a.btn.btn-default{href: "#"} Manage events
+			%a.btn.btn-default{href: "#"} Arrange
+			%a.btn.btn-default.btn-primary{href: new_event_path}
+				%span.glyphicon.glyphicon-plus
+				Create new
+
+
+
+.row
+	- @events.each do |event|
+		= render partial: 'event', locals: {event: event}

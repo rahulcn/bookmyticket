@@ -1,0 +1,2 @@
+.coupon-codes{style: 'background: #F5DEB3;padding: 20px;border-radius: 3px;'}
+	= @offer.coupons.collect(&:coupon_code).join(', ')

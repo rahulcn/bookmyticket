@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140107161708) do
     t.string   "title"
     t.string   "desc"
     t.string   "place"
+    t.float    "price",      default: 0.0
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.datetime "created_at"

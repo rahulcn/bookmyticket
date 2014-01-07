@@ -1,0 +1,39 @@
+.col-md-3{style: 'margin-bottom: 20px;'}
+	.boxed
+		%span.pull-right.action-admin
+			%a.btn.btn-default{href: edit_event_path(event.id)}
+				%i.glyphicon.glyphicon-pencil
+			%a.btn.btn-default{href: event_path(event.id), data: {method: :delete, confirm: 'Are you sure ?'}}
+				%i.glyphicon.glyphicon-trash
+
+		.thumbnail{style: "padding: 0;border: none;margin: 0;"}
+			.caption{style: 'height: 250px;overflow: hidden;'}
+				%h2{style: 'margin-top: 0;'}
+					= event.title
+				%p
+					= event.desc
+				%p
+					%i.glyphicon.glyphicon-map-marker
+					- unless event.place
+						Place, Country
+					- else
+						= event.place
+			.price
+				%button.btn.btn-labeled.btn-default{style: 'margin: 4px;font-size: 16px;'}
+					.btn-label
+						%i.glyphicon.glyphicon-shopping-cart
+					&#8377;
+					= number_with_precision event.price, precision: 2
+			.like
+				.ui-group-buttons
+					%a.btn.btn-default{href: "#", role: "button", style: 'font-size: 16px;'}
+						%span.glyphicon.glyphicon-thumbs-up
+					.or
+					%a.btn.btn-default{href: "#", role: "button", style: 'font-size: 16px;'}
+						%span.glyphicon.glyphicon-thumbs-down
+
+			.modal-footer{style: "text-align: left;background: #5a5a5a;margin: 0;padding: 10px 20px;"}
+				.ui-group-buttons{style: 'width: 202px;'}
+					%button.btn.btn-primary.btn-lg{type: "button"} Attend
+					.or.or-lg
+					%button.button.btn.btn-success.btn-lg{type: "button"} Unattend

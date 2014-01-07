@@ -1,0 +1,104 @@
+.boxed
+	-webkit-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+	-moz-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+	box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+	border-radius: 5px
+	overflow: hidden
+	.action-admin
+		display: none
+		margin: 10px
+		position: absolute
+		right: 15px
+	.price
+		display: inline-block
+		.btn-labeled
+			padding-top: 0
+			padding-bottom: 0
+			.btn-label
+				position: relative
+				left: -12px
+				display: inline-block
+				padding: 6px 12px
+				background: rgba(0, 0, 0, 0.15)
+				border-radius: 3px 0 0 3px
+	.like
+		float: right
+		margin: 4px
+	&:hover
+		.action-admin
+			display: inline-block
+.ui-group-buttons
+	display: block
+	margin: 0 auto
+	.or
+		position: relative
+		float: left
+		width: .3em
+		height: 1.4em
+		z-index: 3
+		font-size: 12px
+		&:before
+			position: absolute
+			top: 50%
+			left: 50%
+			content: 'or'
+			background-color: #5a5a5a
+			margin-top: -0.1em
+			margin-left: -0.9em
+			width: 1.8em
+			height: 1.8em
+			line-height: 1.8
+			color: #fff
+			font-style: normal
+			font-weight: 400
+			text-align: center
+			border-radius: 500px
+			-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1)
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1)
+			-webkit-box-sizing: border-box
+			-moz-box-sizing: border-box
+			-ms-box-sizing: border-box
+			box-sizing: border-box
+		&:after
+			position: absolute
+			top: 0
+			left: 0
+			content: ' '
+			width: .3em
+			height: 3em
+			background-color: rgba(0, 0, 0, 0)
+			border-top: .6em solid #5a5a5a
+			border-bottom: .6em solid #5a5a5a
+		&.or-lg
+			height: 1.3em
+			font-size: 16px
+			&:after
+				height: 2.85em
+		&.or-sm
+			height: 1em
+			&:after
+				height: 2.5em
+		&.or-xs
+			height: .25em
+			&:after
+				height: 1.84em
+				z-index: -1000
+	vertical-align: middle
+	&:after
+		content: "."
+		display: block
+		height: 0
+		clear: both
+		visibility: hidden
+	.btn
+		float: left
+		border-radius: 0
+		&:first-child
+			margin-left: 0
+			border-top-left-radius: .25em
+			border-bottom-left-radius: .25em
+			padding-right: 15px
+		&:last-child
+			border-top-right-radius: .25em
+			border-bottom-right-radius: .25em
+			padding-left: 15px
