@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106153748) do
+ActiveRecord::Schema.define(version: 20140107161708) do
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.string   "desc"
+    t.string   "place"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.string   "ticket_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

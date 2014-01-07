@@ -22,9 +22,10 @@
 			%ul.nav.navbar-nav.navbar-right
 				%li.active
 					= link_to 'Sign out', destroy_user_session_path, method: :delete
-		- else
-			%ul.nav.navbar-nav.navbar-right
-				%li.dropdown
-					= render partial: 'shared/sign_up'
-				%li.dropdown
-					= render partial: 'shared/sign_in'
+		-# Dropdown sign_in, sign_up form.
+		-#- else
+		-#	%ul.nav.navbar-nav.navbar-right
+		-#		%li.dropdown
+		-#			= render partial: 'shared/sign_up'
+		-#		%li.dropdown
+		-#			= render partial: 'shared/sign_in'

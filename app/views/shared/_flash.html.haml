@@ -1,0 +1,43 @@
+-#- if notice
+-#	.col-sm-6.col-md-6
+-#		.alert.alert-warning
+-#			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
+-#				×
+-#			%span.glyphicon.glyphicon-record
+-#			%strong Warning Message
+-#			%hr.message-inner-separator
+-#			%p
+-#				= notice
+
+- if alert
+	.col-sm-6.col-md-6
+		.alert.alert-danger
+			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
+				×
+			%span.glyphicon.glyphicon-hand-right
+			%strong Danger Message
+			%hr.message-inner-separator
+			%p
+				= alert
+
+-#- if info
+-#	.col-sm-6.col-md-6
+-#		.alert.alert-info
+-#			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
+-#				×
+-#			%span.glyphicon.glyphicon-info-sign
+-#			%strong Info Message
+-#			%hr.message-inner-separator
+-#			%p
+-#				= info
+
+- if notice
+	.col-sm-6.col-md-6
+		.alert.alert-success
+			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
+				×
+			%span.glyphicon.glyphicon-ok
+			%strong Success Message
+			%hr.message-inner-separator
+			%p
+				= notice
