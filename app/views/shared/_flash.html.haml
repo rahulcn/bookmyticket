@@ -10,13 +10,13 @@
 -#				= notice
 
 - if alert
-	.col-sm-6.col-md-6
+	.col-sm-12.col-md-12
 		.alert.alert-danger
 			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
 				×
 			%span.glyphicon.glyphicon-hand-right
 			%strong Danger Message
-			%hr.message-inner-separator
+			%hr.message-inner-separator{style: 'margin: 5px 0px;'}
 			%p
 				= alert
 
@@ -32,12 +32,12 @@
 -#				= info
 
 - if notice
-	.col-sm-6.col-md-6
+	.col-sm-12.col-md-12
 		.alert.alert-success
 			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
 				×
 			%span.glyphicon.glyphicon-ok
 			%strong Success Message
-			%hr.message-inner-separator
+			%hr.message-inner-separator{style: 'margin: 5px 0px;'}
 			%p
 				= notice

@@ -1,11 +1,7 @@
 class EventsController < ApplicationController
-	before_action :authenticate_user!, except: [:home]
+	before_action :authenticate_user!
 	before_action :set_event, only: [:destroy, :edit, :update, :show]
 
-
-	def home
-
-	end
 
 	# GET /events
 	# GET /events.json

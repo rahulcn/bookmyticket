@@ -9,18 +9,18 @@
 				%i.glyphicon.glyphicon-trash
 
 		.thumbnail{style: "padding: 0;border: none;margin: 0;"}
-			.caption{style: 'height: 300px;overflow: hidden;'}
+			.caption
 				%a{href: event_path(event.id)}
-					%h2{style: 'margin-top: 0;'}
+					%h3{style: 'margin-top: 0;'}
 						= event.title
 				%p
 					= event.desc
-				%p
-					%i.glyphicon.glyphicon-map-marker
-					- unless event.place
-						Place, Country
-					- else
-						= event.place
+			.place
+				%i.glyphicon.glyphicon-map-marker
+				- unless event.place
+					Place, Country
+				- else
+					= event.place
 			.users{style: 'display: inline-block;'}
 				%a.btn.btn-default.btn-sm{class: attending ? 'btn-success' : '', style: 'margin: 4px;padding: 6px 10px;'}
 					%i.glyphicon.glyphicon-user
@@ -36,9 +36,8 @@
 					= number_with_precision price, precision: 2
 			.like
 				.ui-group-buttons
-					%a.btn.btn-default.btn-sm{href: "#", role: "button", style: 'padding: 6px 10px;'}
+					%a.btn.btn-default.btn-sm{href: "#", role: "button", style: 'padding: 6px 10px;margin-right: -1px;'}
 						%span.glyphicon.glyphicon-thumbs-up
-					.or.or-sm
 					%a.btn.btn-default.btn-sm{href: "#", role: "button", style: 'padding: 6px 10px;'}
 						%span.glyphicon.glyphicon-thumbs-down
 
@@ -58,8 +57,8 @@
 					.empty
 						No Attendees yet.
 
-			.modal-footer{style: "text-align: left;background: #5a5a5a;margin: 0;padding: 10px 20px;"}
-				.ui-group-buttons{style: 'width: 202px;'}
+			.modal-footer{style: "text-align: left;background: #5a5a5a;margin: 0;padding: 5px;"}
+				.ui-group-buttons
 					%a.btn.btn-success.btn-lg{href: event_attend_path(event.id), data: {method: :post, remote: true}, disabled: attending} Attend
 					.or.or-lg
 					%a.button.btn.btn-danger.btn-lg{href: event_unattend_path(event.id), data: {method: :post, remote: true}, disabled: !attending} Unattend

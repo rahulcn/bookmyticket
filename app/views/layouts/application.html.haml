@@ -8,8 +8,10 @@
 	%body
 		%header
 			= render partial: 'shared/header'
-		= render partial: 'shared/flash'
-		.container  
+		.container
+			.row
+				= render partial: 'shared/flash'
+
 			- if signed_in?
 				.row{style: 'margin-bottom: 20px;'}
 					.col-md-5
@@ -18,7 +20,7 @@
 								%img.media-object.dp.img-circle{src: avatar_url(current_user), style: "width: 100px;height:100px;border: 2px solid #CACACA;border-radius: 10%;"}/
 							.media-body
 								%h4.media-heading
-									Rahul Chandra
+									= current_user.name ? current_user.name : 'Rahul Chandra'
 									%small India
 								%h5
 									Software Developer at

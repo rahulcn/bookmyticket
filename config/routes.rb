@@ -10,6 +10,6 @@ Bookmyticket::Application.routes.draw do
 
 
 
-  root 'events#home'
+  root 'events#index'
   match ':controller(/:action(/:id))', via: :get # It handles many cases incase of missing routes.
 end

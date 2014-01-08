@@ -1,6 +1,6 @@
 - users = @event.tickets.collect(&:user)
 .row.show
-	.col-md-8
+	.col-md-9
 		.boxed.well
 			%h2
 				= @event.title
@@ -29,7 +29,7 @@
 				|
 				%i.glyphicon.glyphicon-share
 				%a{href: "#"} 39 Shares
-	.col-md-4
+	.col-md-3
 		.boxed.well
 			%ul.attendee
 				- users.each do |user|
