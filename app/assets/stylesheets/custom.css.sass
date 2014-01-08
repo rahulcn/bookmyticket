@@ -16,6 +16,8 @@ body
 			margin: 10px
 			position: absolute
 			right: 0px
+		.offer
+			position: absolute
 		.caption
 			height: 220px
 			width: 100%
@@ -27,19 +29,13 @@ body
 			margin-bottom: 1px
 		.price
 			display: inline-block
+			margin-left: -2px
 			.btn-labeled
-				padding-top: 0
-				padding-bottom: 0
-				.btn-label
-					position: relative
-					left: -11px
-					display: inline-block
-					padding: 6px 12px
-					background: rgba(0, 0, 0, 0.15)
-					border-radius: 3px 0 0 3px
+				max-width: 107px
 		.like
 			float: right
 			margin: 4px
+			margin-left: 0
 		.attendee
 			position: absolute
 			top: 0
@@ -72,7 +68,44 @@ body
 		border-radius: 5px
 		overflow: hidden
 		position: relative
+		.attendee
+			padding: 0
+			margin: 0
+			li
+				list-style-type: none
+				padding: 10px
+				border-bottom: 1px solid silver
+				&:first-child
+					font-size: 20px
+					i
+						vertical-align: -2px
+				&:last-child
+					border: none
+				.avatar
+					display: inline-block
+					width: 40px
+					border: 1px solid #A2A2A2
+					border-radius: 4px
+					margin-right: 6px
+					img
+						width: 100%
 
+
+.btn-labeled
+	padding-top: 0
+	padding-bottom: 0
+	.btn-label
+		position: relative
+		left: -11px
+		display: inline-block
+		padding: 6px 12px
+		background: rgba(0, 0, 0, 0.15)
+		border-radius: 3px 0 0 3px
+
+	.btn-success
+		color: #FFF
+		background-color: #5CB85C
+		border-color: #4CAE4C
 
 .ui-group-buttons
 	margin: 0 auto

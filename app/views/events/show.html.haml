@@ -4,6 +4,17 @@
 		.boxed.well
 			%h2
 				= @event.title
+
+			%button.btn.btn-labeled.btn-default.btn-sm{style: 'margin: 4px;font-size: 16px;'}
+				.btn-label
+					Starts at
+				= @event.starts_at.strftime('%b %d, %Y at %H:%M %p')
+
+			%button.btn.btn-labeled.btn-default.btn-sm{style: 'margin: 4px;font-size: 16px;'}
+				.btn-label
+					Ends at
+				= @event.ends_at.strftime('%b %d, %Y at %H:%M %p')
+
 			%hr
 			= @event.desc
 			%hr
@@ -22,7 +33,7 @@
 				%a{href: "#"} Admin
 				|
 				%i.glyphicon.glyphicon-calendar
-				Sept 16th, 2012 at 4:20 pm
+				= @event.starts_at.strftime('%b %d, %Y at %H:%M %P')
 				|
 				%i.glyphicon.glyphicon-comment
 				%a{href: "#"} 3 Comments
@@ -30,10 +41,13 @@
 				%i.glyphicon.glyphicon-share
 				%a{href: "#"} 39 Shares
 	.col-md-3
-		.boxed.well
+		.boxed.well{style: 'padding: 0px;'}
 			%ul.attendee
+				%li
+					%i.glyphicon.glyphicon-user
+					Attendee List
 				- users.each do |user|
-					%li{style: 'border-bottom: 1px solid silver;', data: {id: user.id}}
+					%li{data: {id: user.id}}
 						.avatar
 							= image_tag avatar_url(user, {size: 20}), alt: user.name
 						.name{style: 'display: inline-block;vertical-align: middle;'}

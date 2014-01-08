@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 	# PATCH/PUT /events/1
 	# PATCH/PUT /events/1.json
 	def update
-		if @event.update_attributes(event_params)
+		if @event.update_attributes!(event_params)
 			flash[:notice] = 'Event has been successfully updated'
 			redirect_to action: :index
 		else

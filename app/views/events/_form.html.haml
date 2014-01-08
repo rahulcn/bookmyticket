@@ -1,5 +1,7 @@
 .form-horizontal.well
 	= form_for(@event, validate: true) do |f|
+		- starts_at = f.object.starts_at ? f.object.starts_at.strftime("%FT%R") : Time.now.strftime("%FT%R")
+		- ends_at   = f.object.ends_at ? f.object.ends_at.strftime("%FT%R") : Date.tomorrow.strftime("%FT%R")
 
 		.form-group
 			%label.col-sm-3.control-label
@@ -29,13 +31,14 @@
 			%label.col-sm-3.control-label
 				Starts at
 			.col-md-6
-				= f.date_field :starts_at, value: f.object.starts_at, required: 'required'
+				= f.datetime_local_field :starts_at, value: starts_at, required: 'required'
 
 		.form-group
 			%label.col-sm-3.control-label
 				Ends at
 			.col-md-6
-				= f.date_field :ends_at, value: f.object.ends_at, required: 'required'
+				= f.datetime_local_field :ends_at, value: ends_at, required: 'required'
+
 
 		.form-group
 			.col-sm-offset-3.col-sm-6

@@ -5,8 +5,11 @@
 		$('.empty', scope).remove();
 		$('.btn-success', scope).attr('disabled', true);
 		$('.btn-danger', scope).removeAttr('disabled');
-		$('.users a', scope).addClass('btn-success');
-		$('.attendee', scope).append(user).effect("highlight", {color: '#E6ff00'}, 2000);
+		$('.users .btn-label', scope).addClass('btn-success');
+		$('.attendee', scope).append(user);
+
+		count = parseInt($('.users span', scope).html());
+		$('.users span', scope).html(count + 1);
 
 
 

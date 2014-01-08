@@ -3,6 +3,10 @@
 		scope =  $('[data-id=#{@event.id}]');
 		$('.btn-danger', scope).attr('disabled', true);
 		$('.btn-success', scope).removeAttr('disabled');
-		$('.users a', scope).removeClass('btn-success');
+		$('.users .btn-label', scope).removeClass('btn-success');
 		$('li[data-id=#{@user.id}]', scope).remove();
+		count = parseInt($('.users span', scope).text());
+		$('.users span', scope).html(count - 1);
+
+
 
