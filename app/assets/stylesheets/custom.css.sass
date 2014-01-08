@@ -1,40 +1,73 @@
-.boxed
-	-webkit-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
-	-moz-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
-	box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
-	border-radius: 5px
-	overflow: hidden
-	.action-admin
-		display: none
-		margin: 10px
-		position: absolute
-		right: 15px
-	.price
-		display: inline-block
-		.btn-labeled
-			padding-top: 0
-			padding-bottom: 0
-			.btn-label
-				position: relative
-				left: -12px
-				display: inline-block
-				padding: 6px 12px
-				background: rgba(0, 0, 0, 0.15)
-				border-radius: 3px 0 0 3px
-	.like
-		float: right
-		margin: 4px
-	&:hover
+.index
+	.boxed
+		-webkit-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+		-moz-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+		box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+		border-radius: 5px
+		overflow: hidden
+		position: relative
 		.action-admin
+			display: none
+			margin: 10px
+			position: absolute
+			right: 0px
+		.price
 			display: inline-block
+			.btn-labeled
+				padding-top: 0
+				padding-bottom: 0
+				.btn-label
+					position: relative
+					left: -11px
+					display: inline-block
+					padding: 6px 12px
+					background: rgba(0, 0, 0, 0.15)
+					border-radius: 3px 0 0 3px
+		.like
+			float: right
+			margin: 4px
+		.attendee
+			position: absolute
+			top: 0
+			height: 74%
+			width: 100%
+			background: #FFF
+			padding: 5px
+			z-index: 99
+			overflow: auto
+			display: none
+			border-bottom: 1px solid #E9E9E9
+			.avatar
+				width: 34px
+				border: 1px solid #ACACAC
+				border-radius: 4px
+				margin: 4px
+				display: inline-block
+				img
+					width: 100%
+
+		&:hover
+			.action-admin
+				display: inline-block
+
+.show
+	.boxed
+		-webkit-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+		-moz-box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+		box-shadow: 0 0 12px rgba(58, 51, 46, 0.26)
+		border-radius: 5px
+		overflow: hidden
+		position: relative
+
+
 .ui-group-buttons
-	display: block
 	margin: 0 auto
+	display: block
 	.or
 		position: relative
 		float: left
 		width: .3em
-		height: 1.4em
+		height: 1.3em
 		z-index: 3
 		font-size: 12px
 		&:before
@@ -47,7 +80,7 @@
 			margin-left: -0.9em
 			width: 1.8em
 			height: 1.8em
-			line-height: 1.8
+			line-height: 1.55
 			color: #fff
 			font-style: normal
 			font-weight: 400
@@ -65,7 +98,7 @@
 			left: 0
 			content: ' '
 			width: .3em
-			height: 3em
+			height: 2.84em
 			background-color: rgba(0, 0, 0, 0)
 			border-top: .6em solid #5a5a5a
 			border-bottom: .6em solid #5a5a5a
@@ -75,9 +108,9 @@
 			&:after
 				height: 2.85em
 		&.or-sm
-			height: 1em
+			height: 1.1em
 			&:after
-				height: 2.5em
+				height: 2.7em
 		&.or-xs
 			height: .25em
 			&:after

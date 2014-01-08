@@ -1,0 +1,46 @@
+- users = @event.tickets.collect(&:user)
+.row.show
+	.col-md-8
+		.boxed.well
+			%h2
+				= @event.title
+			%hr
+			= @event.desc
+			%hr
+			%p
+				Tags:
+				%a{href: "#"}
+					%span.label.label-info Snipp
+				%a{href: "#"}
+					%span.label.label-info Bootstrap
+				%a{href: "#"}
+					%span.label.label-info UI
+				%a{href: "#"}
+					%span.label.label-info growth
+				|
+				%i.glyphicon.glyphicon-user
+				%a{href: "#"} Admin
+				|
+				%i.glyphicon.glyphicon-calendar
+				Sept 16th, 2012 at 4:20 pm
+				|
+				%i.glyphicon.glyphicon-comment
+				%a{href: "#"} 3 Comments
+				|
+				%i.glyphicon.glyphicon-share
+				%a{href: "#"} 39 Shares
+	.col-md-4
+		.boxed.well
+			%ul.attendee
+				- users.each do |user|
+					%li{style: 'border-bottom: 1px solid silver;', data: {id: user.id}}
+						.avatar
+							= image_tag avatar_url(user, {size: 20}), alt: user.name
+						.name{style: 'display: inline-block;vertical-align: middle;'}
+							= user.name ? user.name : 'Default Name'
+							%br
+							= user.email
+				- if users.empty?
+					.empty
+						No Attendees yet.
+

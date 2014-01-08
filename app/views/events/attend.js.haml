@@ -1,0 +1,12 @@
+- if @user
+	:plain
+		scope =  $('[data-id="#{@event.id}"]');
+		user = $('<li data-id="#{@user.id}" style="border-bottom: 1px solid silver;"><div class="avatar"><img src="#{avatar_url(@user, {size: 20})}"></div><div class="name" style="display: inline-block;vertical-align: middle;">#{@user.name ? @user.name : 'Default Name'}<br>#{@user.email}</div></li>');
+		$('.empty', scope).remove();
+		$('.btn-success', scope).attr('disabled', true);
+		$('.btn-danger', scope).removeAttr('disabled');
+		$('.users a', scope).addClass('btn-success');
+		$('.attendee', scope).append(user).effect("highlight", {color: '#E6ff00'}, 2000);
+
+
+

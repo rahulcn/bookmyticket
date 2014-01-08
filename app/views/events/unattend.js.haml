@@ -1,0 +1,8 @@
+- if @user
+	:plain
+		scope =  $('[data-id=#{@event.id}]');
+		$('.btn-danger', scope).attr('disabled', true);
+		$('.btn-success', scope).removeAttr('disabled');
+		$('.users a', scope).removeClass('btn-success');
+		$('li[data-id=#{@user.id}]', scope).remove();
+

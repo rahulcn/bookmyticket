@@ -1,6 +1,9 @@
 Bookmyticket::Application.routes.draw do
   devise_for :users
-  resources :events
+  resources :events do
+	  post 'attend',   to: 'events#attend'
+	  post 'unattend', to: 'events#unattend'
+  end
 
 
 

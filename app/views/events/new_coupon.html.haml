@@ -1,9 +1,0 @@
-= form_tag(create_coupons_path(offer_id: params[:offer_id]), {:method => :post}) do 
-	%table
-		%tr
-			%td
-				%div.sideBar_Big_Link Number of coupons
-		%tr
-			%td= text_field_tag :num_of_c
-		%tr
-			%td= submit_tag 'Create'

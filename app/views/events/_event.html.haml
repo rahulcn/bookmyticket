@@ -1,5 +1,7 @@
+- users = event.tickets.collect(&:user)
+- attending = users.include?(current_user)
 .col-md-3{style: 'margin-bottom: 20px;'}
-	.boxed
+	.boxed{data: {id: event.id}}
 		%span.pull-right.action-admin
 			%a.btn.btn-default{href: edit_event_path(event.id)}
 				%i.glyphicon.glyphicon-pencil
@@ -7,9 +9,10 @@
 				%i.glyphicon.glyphicon-trash
 
 		.thumbnail{style: "padding: 0;border: none;margin: 0;"}
-			.caption{style: 'height: 250px;overflow: hidden;'}
-				%h2{style: 'margin-top: 0;'}
-					= event.title
+			.caption{style: 'height: 300px;overflow: hidden;'}
+				%a{href: event_path(event.id)}
+					%h2{style: 'margin-top: 0;'}
+						= event.title
 				%p
 					= event.desc
 				%p
@@ -18,22 +21,45 @@
 						Place, Country
 					- else
 						= event.place
+			.users{style: 'display: inline-block;'}
+				%a.btn.btn-default.btn-sm{class: attending ? 'btn-success' : '', style: 'margin: 4px;padding: 6px 10px;'}
+					%i.glyphicon.glyphicon-user
 			.price
-				%button.btn.btn-labeled.btn-default{style: 'margin: 4px;font-size: 16px;'}
+				%button.btn.btn-labeled.btn-default.btn-sm{style: 'margin: 4px;'}
 					.btn-label
 						%i.glyphicon.glyphicon-shopping-cart
 					&#8377;
-					= number_with_precision event.price, precision: 2
+					- if current_user.gender == 'female'
+						- price = event.price - 5.to_f.percent_of(event.price)
+					- else
+						- price = event.price
+					= number_with_precision price, precision: 2
 			.like
 				.ui-group-buttons
-					%a.btn.btn-default{href: "#", role: "button", style: 'font-size: 16px;'}
+					%a.btn.btn-default.btn-sm{href: "#", role: "button", style: 'padding: 6px 10px;'}
 						%span.glyphicon.glyphicon-thumbs-up
-					.or
-					%a.btn.btn-default{href: "#", role: "button", style: 'font-size: 16px;'}
+					.or.or-sm
+					%a.btn.btn-default.btn-sm{href: "#", role: "button", style: 'padding: 6px 10px;'}
 						%span.glyphicon.glyphicon-thumbs-down
+
+
+			%ul.attendee
+				%button.close{type: "button", style: 'padding: 2px;line-height: 12px;'}
+					×
+				- users.each do |user|
+					%li{style: 'border-bottom: 1px solid silver;', data: {id: user.id}}
+						.avatar
+							= image_tag avatar_url(user, {size: 20}), alt: user.name
+						.name{style: 'display: inline-block;vertical-align: middle;'}
+							= user.name ? user.name : 'Default Name'
+							%br
+							= user.email
+				- if users.empty?
+					.empty
+						No Attendees yet.
 
 			.modal-footer{style: "text-align: left;background: #5a5a5a;margin: 0;padding: 10px 20px;"}
 				.ui-group-buttons{style: 'width: 202px;'}
-					%button.btn.btn-primary.btn-lg{type: "button"} Attend
+					%a.btn.btn-success.btn-lg{href: event_attend_path(event.id), data: {method: :post, remote: true}, disabled: attending} Attend
 					.or.or-lg
-					%button.button.btn.btn-success.btn-lg{type: "button"} Unattend
+					%a.button.btn.btn-danger.btn-lg{href: event_unattend_path(event.id), data: {method: :post, remote: true}, disabled: !attending} Unattend

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!, except: [:home]
-	before_action :set_event, only: [:destroy, :edit, :update]
+	before_action :set_event, only: [:destroy, :edit, :update, :show]
 
 
 	def home
@@ -36,15 +36,12 @@ class EventsController < ApplicationController
 	# POST /events.json
 	def create
 		@event = Event.new(event_params)
-
-		respond_to do |format|
-			if @event.save
-				format.html { redirect_to "/#{Event.to_s.underscore.pluralize}", notice: "#{Event.to_s} was successfully created." }
-				format.json { render action: 'show', status: :created, location: @event }
-			else
-				format.html { render action: 'admin/events/new' }
-				format.json { render json: @event.errors, status: :unprocessable_entity }
-			end
+		if @event.save
+			flash[:notice] = 'Event has been successfully created'
+			redirect_to action: :index
+		else
+			flash[:alert] = @event.errors.full_messages
+			render action: :edit
 		end
 	end
 
@@ -65,6 +62,29 @@ class EventsController < ApplicationController
 	def destroy
 		@event.destroy
 		redirect_to action: :index
+	end
+
+	def attend
+		@event = Event.find params[:event_id]
+		unless current_user.tickets.find_by(event_id: @event.id)
+			@event.tickets.create!(ticket_num: "R#{SecureRandom.hex(4)}", user: current_user)
+			@user = current_user
+		end
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def unattend
+		@event = Event.find params[:event_id]
+		ticket = current_user.tickets.find_by(event_id: @event.id)
+		if ticket
+			ticket.delete
+			@user = current_user
+		end
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	private
