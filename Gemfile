@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.2'
 
-gem 'mysql2' # Use mysql as the database for Active Record
 
 gem 'sass-rails', '~> 4.0.0' # Use SCSS for stylesheets
 
@@ -23,7 +22,16 @@ gem 'devise' # Authentication
 
 gem "erb2haml", :group => :development
 
+group :production do
+	gem 'pg', '0.15.1'
+	gem 'rails_12factor', '0.0.2'
+end
+
+group :development do
+	gem 'mysql2' # Use mysql as the database for Active Record
+end
+
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+	# bundle exec rake doc:rails generates the API under doc/api.
+	gem 'sdoc', require: false
 end
