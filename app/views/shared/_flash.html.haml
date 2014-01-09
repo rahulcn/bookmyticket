@@ -20,16 +20,16 @@
 			%p
 				= alert
 
--#- if info
--#	.col-sm-6.col-md-6
--#		.alert.alert-info
--#			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
--#				×
--#			%span.glyphicon.glyphicon-info-sign
--#			%strong Info Message
--#			%hr.message-inner-separator
--#			%p
--#				= info
+- unless signed_in?
+	.col-sm-6.col-md-6
+		.alert.alert-info{style: 'margin: 50px 0px -114px;'}
+			%button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"}
+				×
+			%span.glyphicon.glyphicon-info-sign
+			%strong Info Message
+			%hr.message-inner-separator
+			%p
+				Please login to manage Events.
 
 - if notice
 	.col-sm-12.col-md-12
